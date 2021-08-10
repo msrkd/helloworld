@@ -3,30 +3,9 @@ name: Integration tests
 on:
   # Run on every pull request
   pull_request_target:
-    branches: [ main ]
 
 jobs:
-  # Branch-based pull request from this repo
-  integration-trusted:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Set up Go 1.14
-        uses: actions/setup-go@v2
-        with:
-          go-version: ^1.14
-        id: go
+   test:
+	runs-on: ubuntu-latest
+	  run: echo "${{github.actor}}"
 
-      - name: Check out code into the Go module directory
-        uses: actions/checkout@v2
-
-      - name: Get dependencies
-        run: |
-          go get -u golang.org/x/lint/golint
-          go get -u golang.org/x/tools/cmd/goimports
-
-
-      - name: Run e2e tests
-        env:
-          DISABLE_PROMPT: true
-        run: |
-          ./scripts/test.sh
