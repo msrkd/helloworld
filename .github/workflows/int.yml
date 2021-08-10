@@ -7,5 +7,7 @@ on:
 jobs:
    test:
 	runs-on: ubuntu-latest
-	  run: echo "${{github.actor}}"
+	steps:
+		- name:  Display actor
+	  	  run: echo "${{github.actor}}"
 
