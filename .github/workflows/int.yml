@@ -1,12 +1,8 @@
-# Automatically approve PRs made by Dependabot
-
-name: Auto Approve Dependabot PR's
-
-on:
-  pull_request_target
-
 jobs:
-  auto-approve:
+  one:
     runs-on: ubuntu-latest
     steps:
-        run: echo ${{github.actor}}
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
